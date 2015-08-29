@@ -10,17 +10,7 @@ import (
 	"time"
 )
 
-
-func init() {
-	SeedRandom()
-}
-
-// SeedRandom seeds random with current time, in nano.
-func SeedRandom() {
-	rand.Seed(time.Now().UTC().UnixNano())
-}
-
-// Takes a 'set', a slice of interfaces, and shuffles the set, returning a 
+// Takes a 'set', a slice of interfaces, and shuffles the set, returning a
 // slice of interfaces.
 func FisherYates(set []interface{}) []interface{} {
 	l := len(set)
