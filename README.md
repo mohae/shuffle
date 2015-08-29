@@ -27,6 +27,8 @@ Shuffle/randomize:
 ## Notes:
 Currently, `shuffler` uses `math/rand` which is not a CSPRNG.
 
+It is the caller's responsibility to seed the PRNG.
+
 
 Copyright 2014 Joel Scoble, all rights reserved.
 
