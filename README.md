@@ -1,6 +1,9 @@
 shuffler
 ========
 
+**WIP**
+This implementation is not usable. In process of reworking; until then do not use. `WIP` tag will be removed when done.
+
 shuffler has shuffling implementations, well probably only one, but it could have others...at some point
 
 **Implements Fisher-Yates**
