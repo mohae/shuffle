@@ -8,9 +8,9 @@ import (
 	"math/rand"
 )
 
-// Takes a 'set', a slice of interfaces, and shuffles the set, returning a
-// slice of interfaces.
-func ShuffleInterfaces(set []interface{}) []interface{} {
+// ShuffleInterfaces randomizes a slice of interfaces. Since everything is
+// done in place, the slice header is not modified: nothing is returned.
+func ShuffleInterfaces(set []interface{}) {
 	l := len(set)
 	for i := 0; i < l; i++ {
 		r := rand.Intn(i + 1)
@@ -18,10 +18,9 @@ func ShuffleInterfaces(set []interface{}) []interface{} {
 			set[r], set[i] = set[i], set[r]
 		}
 	}
-	return set
 }
 
-// ShuffleInts randomzies a slice of ints. Since everything is done in
+// ShuffleInts randomizes a slice of ints. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
 func ShuffleInts(set []int) {
 	l := len(set)
@@ -33,7 +32,7 @@ func ShuffleInts(set []int) {
 	}
 }
 
-// ShuffleStrings randomzies a slice of ints. Since everything is done in
+// ShuffleStrings randomizes a slice of ints. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
 func ShuffleStrings(set []string) {
 	l := len(set)

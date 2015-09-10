@@ -19,7 +19,7 @@ func TestShuffleInterfaces(t *testing.T) {
     itesters[i] = Tester{i}
   }
   // make it into a slice of interface
-  itesters = ShuffleInterfaces(itesters)
+  ShuffleInterfaces(itesters)
   expected := []int{8,2,3,0,5,7,1,6,9,4}
   for i, v := range itesters {
     if expected[i] != v.(Tester).val {
