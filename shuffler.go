@@ -20,3 +20,15 @@ func ShuffleInterfaces(set []interface{}) []interface{} {
 	}
 	return set
 }
+
+// ShuffleInts randomzies a slice of ints. Since everything is done in
+// place, the slice header is not modified: nothing is returned.
+func ShuffleInts(set []int) {
+	l := len(set)
+	for i := 0; i < l; i++ {
+		r := rand.Intn(i + 1)
+		if i != r {
+			set[r], set[i] = set[i], set[r]
+		}
+	}
+}
