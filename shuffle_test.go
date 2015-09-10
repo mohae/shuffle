@@ -10,6 +10,7 @@ type Tester struct {
 }
 
 var ints = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+var strings = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
 
 func TestShuffleInterfaces(t *testing.T) {
   rand.Seed(0)
@@ -35,6 +36,18 @@ func TestShuffleInts(t *testing.T) {
   for i, v := range ints {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
+    }
+  }
+}
+
+func TestShuffleStrings(t *testing.T) {
+  rand.Seed(0)
+  // make it into a slice of interface
+  ShuffleStrings(strings)
+  expected := []string{"i", "c", "d", "a", "f", "h", "b", "g", "j", "e"}
+  for i, v := range strings {
+    if expected[i] != v {
+      t.Errorf("Expected %q got %q", expected[i], v)
     }
   }
 }

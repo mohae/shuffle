@@ -32,3 +32,15 @@ func ShuffleInts(set []int) {
 		}
 	}
 }
+
+// ShuffleStrings randomzies a slice of ints. Since everything is done in
+// place, the slice header is not modified: nothing is returned.
+func ShuffleStrings(set []string) {
+	l := len(set)
+	for i := 0; i < l; i++ {
+		r := rand.Intn(i + 1)
+		if i != r {
+			set[r], set[i] = set[i], set[r]
+		}
+	}
+}
