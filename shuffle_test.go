@@ -9,8 +9,8 @@ type Tester struct {
   val int
 }
 
-var ints = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-var strings = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
+var intSl = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+var stringSl = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
 
 func TestShuffleInterfaces(t *testing.T) {
   rand.Seed(0)
@@ -30,10 +30,16 @@ func TestShuffleInterfaces(t *testing.T) {
 
 func TestShuffleInts(t *testing.T) {
   rand.Seed(0)
-  // make it into a slice of interface
-  ShuffleInts(ints)
+  // copy the original
+  testInts := make([]int, len(intSl))
+  n := copy(testInts, intSl)
+  if n != len(intSl) {
+    t.Errorf("short copy: expected %d to be copied, %d were", len(intSl), n)
+    return
+  }
+  ShuffleInts(testInts)
   expected := []int{8,2,3,0,5,7,1,6,9,4}
-  for i, v := range ints {
+  for i, v := range testInts {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
     }
@@ -42,10 +48,17 @@ func TestShuffleInts(t *testing.T) {
 
 func TestShuffleStrings(t *testing.T) {
   rand.Seed(0)
-  // make it into a slice of interface
-  ShuffleStrings(strings)
+  // copy the original
+  testStrings := make([]string, len(stringSl))
+  n := copy(testStrings, stringSl)
+  if n != len(stringSl) {
+    t.Errorf("short copy: expected %d to be copied, %d were", len(stringSl), n)
+    return
+  }
+
+  ShuffleStrings(testStrings)
   expected := []string{"i", "c", "d", "a", "f", "h", "b", "g", "j", "e"}
-  for i, v := range strings {
+  for i, v := range testStrings {
     if expected[i] != v {
       t.Errorf("Expected %q got %q", expected[i], v)
     }
