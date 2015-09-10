@@ -9,7 +9,7 @@ type Tester struct {
   val int
 }
 
-func TestShuffleIface(t *testing.T) {
+func TestShuffleInterfaces(t *testing.T) {
     rand.Seed(0)
     itesters := make([]interface{}, 10)
     for i := 0; i < 10; i++ {

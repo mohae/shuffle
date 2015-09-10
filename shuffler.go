@@ -10,7 +10,7 @@ import (
 
 // Takes a 'set', a slice of interfaces, and shuffles the set, returning a
 // slice of interfaces.
-func ShuffleIface(set []interface{}) []interface{} {
+func ShuffleInterfaces(set []interface{}) []interface{} {
 	l := len(set)
 	for i := 0; i < l; i++ {
 		r := rand.Intn(i + 1)
