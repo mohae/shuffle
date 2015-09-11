@@ -10,6 +10,7 @@ type Tester struct {
 }
 
 var intSl = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+var uintSl = []uint{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var stringSl = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
 
 func TestShuffleInterfaces(t *testing.T) {
@@ -40,6 +41,24 @@ func TestShuffleInts(t *testing.T) {
   ShuffleInts(testInts)
   expected := []int{8,2,3,0,5,7,1,6,9,4}
   for i, v := range testInts {
+    if expected[i] != v {
+      t.Errorf("Expected %d got %d", expected[i], v)
+    }
+  }
+}
+
+func TestShuffleUints(t *testing.T) {
+  rand.Seed(0)
+  // copy the original
+  test := make([]uint, len(intSl))
+  n := copy(test, uintSl)
+  if n != len(uintSl) {
+    t.Errorf("short copy: expected %d to be copied, %d were", len(uintSl), n)
+    return
+  }
+  ShuffleUints(test)
+  expected := []uint{8,2,3,0,5,7,1,6,9,4}
+  for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
     }
