@@ -85,6 +85,17 @@ func ShuffleInt8(set []int8) {
 	}
 }
 
+// ShuffleInt16 randomizes a slice of int16s. Since everything is done in
+// place, the slice header is not modified: nothing is returned.
+func ShuffleInt16(set []int16) {
+	for i := 0; i < len(set); i++ {
+		r := rand.Intn(i + 1)
+		if i != r {
+			set[r], set[i] = set[i], set[r]
+		}
+	}
+}
+
 // ShuffleUint randomizes a slice of uints. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
 func ShuffleUint(set []uint) {
