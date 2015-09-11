@@ -16,6 +16,7 @@ var float64Sl = []float64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var intSl = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var int8Sl = []int8{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var int16Sl = []int16{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+var int32Sl = []int32{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var uintSl = []uint{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var stringSl = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
 
@@ -154,6 +155,24 @@ func TestShuffleInt16(t *testing.T) {
   }
   ShuffleInt16(test)
   expected := []int16{8,2,3,0,5,7,1,6,9,4}
+  for i, v := range test {
+    if expected[i] != v {
+      t.Errorf("Expected %d got %d", expected[i], v)
+    }
+  }
+}
+
+func TestShuffleInt32(t *testing.T) {
+  rand.Seed(0)
+  // copy the original
+  test := make([]int32, len(int32Sl))
+  n := copy(test, int32Sl)
+  if n != len(int32Sl) {
+    t.Errorf("short copy: expected %d to be copied, %d were", len(int32Sl), n)
+    return
+  }
+  ShuffleInt32(test)
+  expected := []int32{8,2,3,0,5,7,1,6,9,4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
