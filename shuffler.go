@@ -19,6 +19,17 @@ func ShuffleInterface(set []interface{}) {
 	}
 }
 
+// ShuffleByte randomizes a slice of bytes. Since everything is done in
+// place, the slice header is not modified: nothing is returned.
+func ShuffleByte(set []byte) {
+	for i := 0; i < len(set); i++ {
+		r := rand.Intn(i + 1)
+		if i != r {
+			set[r], set[i] = set[i], set[r]
+		}
+	}
+}
+
 // ShuffleComplex64 randomizes a slice of complex64s. Since everything is
 // done in place, the slice header is not modified: nothing is returned.
 func ShuffleComplex64(set []complex64) {

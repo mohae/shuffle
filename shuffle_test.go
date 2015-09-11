@@ -9,6 +9,7 @@ type Tester struct {
   val int
 }
 
+var byteSl = []byte{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'}
 var complex64Sl = []complex64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var complex128Sl = []complex128{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var float32Sl = []float32{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
@@ -37,6 +38,24 @@ func TestShuffleInterface(t *testing.T) {
   for i, v := range test {
     if expected[i] != v.(Tester).val {
       t.Errorf("Expected %d got %d", expected[i], v.(Tester).val)
+    }
+  }
+}
+
+func TestShuffleByte(t *testing.T) {
+  rand.Seed(0)
+  // copy the original
+  test := make([]byte, len(byteSl))
+  n := copy(test, byteSl)
+  if n != len(byteSl) {
+    t.Errorf("short copy: expected %d to be copied, %d were", len(byteSl), n)
+    return
+  }
+  ShuffleByte(test)
+  expected := []byte{'i', 'c', 'd', 'a', 'f', 'h', 'b', 'g', 'j', 'e'}
+  for i, v := range test {
+    if expected[i] != v {
+      t.Errorf("Expected %d got %d", expected[i], v)
     }
   }
 }
