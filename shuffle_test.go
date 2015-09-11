@@ -10,6 +10,7 @@ type Tester struct {
 }
 
 var float32Sl = []float32{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+var complex64Sl = []complex64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var intSl = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var uintSl = []uint{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var stringSl = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
@@ -30,10 +31,28 @@ func TestShuffleInterface(t *testing.T) {
   }
 }
 
+func TestShuffleComplex64(t *testing.T) {
+  rand.Seed(0)
+  // copy the original
+  test := make([]complex64, len(complex64Sl))
+  n := copy(test, complex64Sl)
+  if n != len(complex64Sl) {
+    t.Errorf("short copy: expected %d to be copied, %d were", len(complex64Sl), n)
+    return
+  }
+  ShuffleComplex64(test)
+  expected := []complex64{8,2,3,0,5,7,1,6,9,4}
+  for i, v := range test {
+    if expected[i] != v {
+      t.Errorf("Expected %d got %d", expected[i], v)
+    }
+  }
+}
+
 func TestShuffleFloat32(t *testing.T) {
   rand.Seed(0)
   // copy the original
-  test := make([]float32, len(intSl))
+  test := make([]float32, len(float32Sl))
   n := copy(test, float32Sl)
   if n != len(float32Sl) {
     t.Errorf("short copy: expected %d to be copied, %d were", len(float32Sl), n)
@@ -69,7 +88,7 @@ func TestShuffleInt(t *testing.T) {
 func TestShuffleUint(t *testing.T) {
   rand.Seed(0)
   // copy the original
-  test := make([]uint, len(intSl))
+  test := make([]uint, len(uintSl))
   n := copy(test, uintSl)
   if n != len(uintSl) {
     t.Errorf("short copy: expected %d to be copied, %d were", len(uintSl), n)
@@ -93,7 +112,6 @@ func TestShuffleString(t *testing.T) {
     t.Errorf("short copy: expected %d to be copied, %d were", len(stringSl), n)
     return
   }
-
   ShuffleString(test)
   expected := []string{"i", "c", "d", "a", "f", "h", "b", "g", "j", "e"}
   for i, v := range test {
