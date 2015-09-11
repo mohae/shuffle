@@ -52,6 +52,17 @@ func ShuffleFloat32(set []float32) {
 	}
 }
 
+// ShuffleFloat64 randomizes a slice of float64s. Since everything is done
+// in place, the slice header is not modified: nothing is returned.
+func ShuffleFloat64(set []float64) {
+	for i := 0; i < len(set); i++ {
+		r := rand.Intn(i + 1)
+		if i != r {
+			set[r], set[i] = set[i], set[r]
+		}
+	}
+}
+
 // ShuffleInt randomizes a slice of ints. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
 func ShuffleInt(set []int) {

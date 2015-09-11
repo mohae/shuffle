@@ -9,9 +9,10 @@ type Tester struct {
   val int
 }
 
-var float32Sl = []float32{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var complex64Sl = []complex64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var complex128Sl = []complex128{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+var float32Sl = []float32{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+var float64Sl = []float64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var intSl = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var uintSl = []uint{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var stringSl = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
@@ -79,6 +80,24 @@ func TestShuffleFloat32(t *testing.T) {
   }
   ShuffleFloat32(test)
   expected := []float32{8,2,3,0,5,7,1,6,9,4}
+  for i, v := range test {
+    if expected[i] != v {
+      t.Errorf("Expected %d got %d", expected[i], v)
+    }
+  }
+}
+
+func TestShuffleFloat64(t *testing.T) {
+  rand.Seed(0)
+  // copy the original
+  test := make([]float64, len(float64Sl))
+  n := copy(test, float64Sl)
+  if n != len(float64Sl) {
+    t.Errorf("short copy: expected %d to be copied, %d were", len(float64Sl), n)
+    return
+  }
+  ShuffleFloat64(test)
+  expected := []float64{8,2,3,0,5,7,1,6,9,4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
