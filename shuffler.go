@@ -20,6 +20,18 @@ func ShuffleInterfaces(set []interface{}) {
 	}
 }
 
+// ShuffleFloat32 randomizes a slice of float32. Since everything is done in
+// place, the slice header is not modified: nothing is returned.
+func ShuffleFloat32(set []float32) {
+	l := len(set)
+	for i := 0; i < l; i++ {
+		r := rand.Intn(i + 1)
+		if i != r {
+			set[r], set[i] = set[i], set[r]
+		}
+	}
+}
+
 // ShuffleInts randomizes a slice of ints. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
 func ShuffleInts(set []int) {
