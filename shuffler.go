@@ -11,8 +11,7 @@ import (
 // ShuffleInterface randomizes a slice of interfaces. Since everything is
 // done in place, the slice header is not modified: nothing is returned.
 func ShuffleInterface(set []interface{}) {
-	l := len(set)
-	for i := 0; i < l; i++ {
+	for i := 0; i < len(set); i++ {
 		r := rand.Intn(i + 1)
 		if i != r {
 			set[r], set[i] = set[i], set[r]
@@ -20,11 +19,10 @@ func ShuffleInterface(set []interface{}) {
 	}
 }
 
-// ShuffleFloat32 randomizes a slice of float32s. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
+// ShuffleFloat32 randomizes a slice of float32s. Since everything is done
+// in place, the slice header is not modified: nothing is returned.
 func ShuffleFloat32(set []float32) {
-	l := len(set)
-	for i := 0; i < l; i++ {
+	for i := 0; i < len(set); i++ {
 		r := rand.Intn(i + 1)
 		if i != r {
 			set[r], set[i] = set[i], set[r]
@@ -35,8 +33,7 @@ func ShuffleFloat32(set []float32) {
 // ShuffleInt randomizes a slice of ints. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
 func ShuffleInt(set []int) {
-	l := len(set)
-	for i := 0; i < l; i++ {
+	for i := 0; i < len(set); i++ {
 		r := rand.Intn(i + 1)
 		if i != r {
 			set[r], set[i] = set[i], set[r]
@@ -47,8 +44,7 @@ func ShuffleInt(set []int) {
 // ShuffleUint randomizes a slice of uints. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
 func ShuffleUint(set []uint) {
-	l := len(set)
-	for i := 0; i < l; i++ {
+	for i := 0; i < len(set); i++ {
 		r := rand.Intn(i + 1)
 		if i != r {
 			set[r], set[i] = set[i], set[r]
@@ -59,8 +55,7 @@ func ShuffleUint(set []uint) {
 // ShuffleString randomizes a slice of strings. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
 func ShuffleString(set []string) {
-	l := len(set)
-	for i := 0; i < l; i++ {
+	for i := 0; i < len(set); i++ {
 		r := rand.Intn(i + 1)
 		if i != r {
 			set[r], set[i] = set[i], set[r]
