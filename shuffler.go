@@ -8,9 +8,9 @@ import (
 	"math/rand"
 )
 
-// ShuffleInterfaces randomizes a slice of interfaces. Since everything is
+// ShuffleInterface randomizes a slice of interfaces. Since everything is
 // done in place, the slice header is not modified: nothing is returned.
-func ShuffleInterfaces(set []interface{}) {
+func ShuffleInterface(set []interface{}) {
 	l := len(set)
 	for i := 0; i < l; i++ {
 		r := rand.Intn(i + 1)
@@ -20,7 +20,7 @@ func ShuffleInterfaces(set []interface{}) {
 	}
 }
 
-// ShuffleFloat32 randomizes a slice of float32. Since everything is done in
+// ShuffleFloat32 randomizes a slice of float32s. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
 func ShuffleFloat32(set []float32) {
 	l := len(set)
@@ -32,9 +32,9 @@ func ShuffleFloat32(set []float32) {
 	}
 }
 
-// ShuffleInts randomizes a slice of ints. Since everything is done in
+// ShuffleInt randomizes a slice of ints. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
-func ShuffleInts(set []int) {
+func ShuffleInt(set []int) {
 	l := len(set)
 	for i := 0; i < l; i++ {
 		r := rand.Intn(i + 1)
@@ -44,9 +44,9 @@ func ShuffleInts(set []int) {
 	}
 }
 
-// ShuffleUints randomizes a slice of ints. Since everything is done in
+// ShuffleUint randomizes a slice of uints. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
-func ShuffleUints(set []uint) {
+func ShuffleUint(set []uint) {
 	l := len(set)
 	for i := 0; i < l; i++ {
 		r := rand.Intn(i + 1)
@@ -56,9 +56,9 @@ func ShuffleUints(set []uint) {
 	}
 }
 
-// ShuffleStrings randomizes a slice of ints. Since everything is done in
+// ShuffleString randomizes a slice of strings. Since everything is done in
 // place, the slice header is not modified: nothing is returned.
-func ShuffleStrings(set []string) {
+func ShuffleString(set []string) {
 	l := len(set)
 	for i := 0; i < l; i++ {
 		r := rand.Intn(i + 1)

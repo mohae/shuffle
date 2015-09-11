@@ -14,16 +14,16 @@ var intSl = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var uintSl = []uint{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 var stringSl = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j"}
 
-func TestShuffleInterfaces(t *testing.T) {
+func TestShuffleInterface(t *testing.T) {
   rand.Seed(0)
-  itesters := make([]interface{}, 10)
+  test := make([]interface{}, 10)
   for i := 0; i < 10; i++ {
-    itesters[i] = Tester{i}
+    test[i] = Tester{i}
   }
   // make it into a slice of interface
-  ShuffleInterfaces(itesters)
+  ShuffleInterface(test)
   expected := []int{8,2,3,0,5,7,1,6,9,4}
-  for i, v := range itesters {
+  for i, v := range test {
     if expected[i] != v.(Tester).val {
       t.Errorf("Expected %d got %d", expected[i], v.(Tester).val)
     }
@@ -48,25 +48,25 @@ func TestShuffleFloat32(t *testing.T) {
   }
 }
 
-func TestShuffleInts(t *testing.T) {
+func TestShuffleInt(t *testing.T) {
   rand.Seed(0)
   // copy the original
-  testInts := make([]int, len(intSl))
-  n := copy(testInts, intSl)
+  test := make([]int, len(intSl))
+  n := copy(test, intSl)
   if n != len(intSl) {
     t.Errorf("short copy: expected %d to be copied, %d were", len(intSl), n)
     return
   }
-  ShuffleInts(testInts)
+  ShuffleInt(test)
   expected := []int{8,2,3,0,5,7,1,6,9,4}
-  for i, v := range testInts {
+  for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
     }
   }
 }
 
-func TestShuffleUints(t *testing.T) {
+func TestShuffleUint(t *testing.T) {
   rand.Seed(0)
   // copy the original
   test := make([]uint, len(intSl))
@@ -75,7 +75,7 @@ func TestShuffleUints(t *testing.T) {
     t.Errorf("short copy: expected %d to be copied, %d were", len(uintSl), n)
     return
   }
-  ShuffleUints(test)
+  ShuffleUint(test)
   expected := []uint{8,2,3,0,5,7,1,6,9,4}
   for i, v := range test {
     if expected[i] != v {
@@ -84,19 +84,19 @@ func TestShuffleUints(t *testing.T) {
   }
 }
 
-func TestShuffleStrings(t *testing.T) {
+func TestShuffleString(t *testing.T) {
   rand.Seed(0)
   // copy the original
-  testStrings := make([]string, len(stringSl))
-  n := copy(testStrings, stringSl)
+  test := make([]string, len(stringSl))
+  n := copy(test, stringSl)
   if n != len(stringSl) {
     t.Errorf("short copy: expected %d to be copied, %d were", len(stringSl), n)
     return
   }
 
-  ShuffleStrings(testStrings)
+  ShuffleString(test)
   expected := []string{"i", "c", "d", "a", "f", "h", "b", "g", "j", "e"}
-  for i, v := range testStrings {
+  for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %q got %q", expected[i], v)
     }
