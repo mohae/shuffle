@@ -34,7 +34,7 @@ func TestShuffleInterface(t *testing.T) {
   }
   // make it into a slice of interface
   ShuffleInterface(test)
-  expected := []int{8,2,3,0,5,7,1,6,9,4}
+  expected := []int{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v.(Tester).val {
       t.Errorf("Expected %d got %d", expected[i], v.(Tester).val)
@@ -52,10 +52,10 @@ func TestShuffleByte(t *testing.T) {
     return
   }
   ShuffleByte(test)
-  expected := []byte{'i', 'c', 'd', 'a', 'f', 'h', 'b', 'g', 'j', 'e'}
+  expected := []byte{'g', 'i', 'c', 'd', 'h', 'f', 'j', 'b', 'a', 'e'}
   for i, v := range test {
     if expected[i] != v {
-      t.Errorf("Expected %d got %d", expected[i], v)
+      t.Errorf("Expected %s got %s", string(expected[i]), string(v))
     }
   }
 }
@@ -70,7 +70,7 @@ func TestShuffleComplex64(t *testing.T) {
     return
   }
   ShuffleComplex64(test)
-  expected := []complex64{8,2,3,0,5,7,1,6,9,4}
+  expected := []complex64{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -88,7 +88,7 @@ func TestShuffleComplex128(t *testing.T) {
     return
   }
   ShuffleComplex128(test)
-  expected := []complex128{8,2,3,0,5,7,1,6,9,4}
+  expected := []complex128{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -106,7 +106,7 @@ func TestShuffleFloat32(t *testing.T) {
     return
   }
   ShuffleFloat32(test)
-  expected := []float32{8,2,3,0,5,7,1,6,9,4}
+  expected := []float32{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -124,7 +124,7 @@ func TestShuffleFloat64(t *testing.T) {
     return
   }
   ShuffleFloat64(test)
-  expected := []float64{8,2,3,0,5,7,1,6,9,4}
+  expected := []float64{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -142,7 +142,7 @@ func TestShuffleInt(t *testing.T) {
     return
   }
   ShuffleInt(test)
-  expected := []int{8,2,3,0,5,7,1,6,9,4}
+  expected := []int{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -160,7 +160,7 @@ func TestShuffleInt8(t *testing.T) {
     return
   }
   ShuffleInt8(test)
-  expected := []int8{8,2,3,0,5,7,1,6,9,4}
+  expected := []int8{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -178,7 +178,7 @@ func TestShuffleInt16(t *testing.T) {
     return
   }
   ShuffleInt16(test)
-  expected := []int16{8,2,3,0,5,7,1,6,9,4}
+  expected := []int16{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -196,7 +196,7 @@ func TestShuffleInt32(t *testing.T) {
     return
   }
   ShuffleInt32(test)
-  expected := []int32{8,2,3,0,5,7,1,6,9,4}
+  expected := []int32{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -214,7 +214,7 @@ func TestShuffleInt64(t *testing.T) {
     return
   }
   ShuffleInt64(test)
-  expected := []int64{8,2,3,0,5,7,1,6,9,4}
+  expected := []int64{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -232,7 +232,7 @@ func TestShuffleUint(t *testing.T) {
     return
   }
   ShuffleUint(test)
-  expected := []uint{8,2,3,0,5,7,1,6,9,4}
+  expected := []uint{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -250,7 +250,7 @@ func TestShuffleUint8(t *testing.T) {
     return
   }
   ShuffleUint8(test)
-  expected := []uint8{8,2,3,0,5,7,1,6,9,4}
+  expected := []uint8{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -268,7 +268,7 @@ func TestShuffleUint16(t *testing.T) {
     return
   }
   ShuffleUint16(test)
-  expected := []uint16{8,2,3,0,5,7,1,6,9,4}
+  expected := []uint16{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -286,7 +286,7 @@ func TestShuffleUint32(t *testing.T) {
     return
   }
   ShuffleUint32(test)
-  expected := []uint32{8,2,3,0,5,7,1,6,9,4}
+  expected := []uint32{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -304,7 +304,7 @@ func TestShuffleUint64(t *testing.T) {
     return
   }
   ShuffleUint64(test)
-  expected := []uint64{8,2,3,0,5,7,1,6,9,4}
+  expected := []uint64{6, 8, 2, 3, 7, 5, 9, 1, 0, 4}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %d got %d", expected[i], v)
@@ -322,7 +322,7 @@ func TestShuffleString(t *testing.T) {
     return
   }
   ShuffleString(test)
-  expected := []string{"i", "c", "d", "a", "f", "h", "b", "g", "j", "e"}
+  expected := []string{"g", "i", "c", "d", "h", "f", "j", "b", "a", "e"}
   for i, v := range test {
     if expected[i] != v {
       t.Errorf("Expected %q got %q", expected[i], v)

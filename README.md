@@ -28,10 +28,9 @@ Randomize:
 
 
 ## Notes:
-Currently, `shuffler` uses `math/rand` which is not a CSPRNG.
+Currently, `shuffler` uses `math/rand` which is not a CSPRNG.  This means the randomization is not truly random and the larger the set the worse the "randomization".
 
 It is the caller's responsibility to seed the PRNG.
-
 
 ## License
 
