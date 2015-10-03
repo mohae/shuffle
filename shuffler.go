@@ -5,192 +5,278 @@
 package shuffler
 
 import (
-	"math/rand"
+	"crypto/rand"
+	"math/big"
 )
 
-// ShuffleInterface randomizes a slice of interfaces. Since everything is
-// done in place, the slice header is not modified: nothing is returned.
-func ShuffleInterface(p []interface{}) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleInterface randomizes an interface slice
+func ShuffleInterface(c []interface{}) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleByte randomizes a slice of bytes. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
-func ShuffleByte(p []byte) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleByte randomizes a byte slice.
+func ShuffleByte(c []byte) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleComplex64 randomizes a slice of complex64s. Since everything is
-// done in place, the slice header is not modified: nothing is returned.
-func ShuffleComplex64(p []complex64) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleComplex64 randomizes a complex64 slice.
+func ShuffleComplex64(c []complex64) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleComplex129 randomizes a slice of complex128s. Since everything is
-// done in place, the slice header is not modified: nothing is returned.
-func ShuffleComplex128(p []complex128) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleComplex129 randomizes a complex128 slice.
+func ShuffleComplex128(c []complex128) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleFloat32 randomizes a slice of float32s. Since everything is done
-// in place, the slice header is not modified: nothing is returned.
-func ShuffleFloat32(p []float32) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleFloat32 randomizes a float32 slice.
+func ShuffleFloat32(c []float32) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleFloat64 randomizes a slice of float64s. Since everything is done
-// in place, the slice header is not modified: nothing is returned.
-func ShuffleFloat64(p []float64) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleFloat64 randomizes a float64 slice.
+func ShuffleFloat64(c []float64) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleInt randomizes a slice of ints. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
-func ShuffleInt(p []int) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleInt randomizes an int slice.
+func ShuffleInt(c []int) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleInt8 randomizes a slice of int8s. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
-func ShuffleInt8(p []int8) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleInt8 randomizes an int8 slice.
+func ShuffleInt8(c []int8) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleInt16 randomizes a slice of int16s. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
-func ShuffleInt16(p []int16) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleInt16 randomizes an int16 slice.
+func ShuffleInt16(c []int16) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleInt32 randomizes a slice of int32s. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
-func ShuffleInt32(p []int32) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleInt32 randomizes an int32 slice.
+func ShuffleInt32(c []int32) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleInt64 randomizes a slice of int64s. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
-func ShuffleInt64(p []int64) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleInt64 randomizes an int64 slice.
+func ShuffleInt64(c []int64) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleUint randomizes a slice of uints. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
-func ShuffleUint(p []uint) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleString randomizes a strings slice.
+func ShuffleString(c []string) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleUint8 randomizes a slice of uint8s. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
-func ShuffleUint8(p []uint8) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleUint randomizes an uint slice.
+func ShuffleUint(c []uint) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleUint16 randomizes a slice of uint16s. Since everything is done
-// in place, the slice header is not modified: nothing is returned.
-func ShuffleUint16(p []uint16) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleUint8 randomizes an uint8 slice.
+func ShuffleUint8(c []uint8) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleUint32 randomizes a slice of uint32s. Since everything is done
-// in place, the slice header is not modified: nothing is returned.
-func ShuffleUint32(p []uint32) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleUint16 randomizes an uint16 slice.
+func ShuffleUint16(c []uint16) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleUint64 randomizes a slice of uint64s. Since everything is done
-// in place, the slice header is not modified: nothing is returned.
-func ShuffleUint64(p []uint64) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleUint32 randomizes an uint32 slice.
+func ShuffleUint32(c []uint32) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
 
-// ShuffleString randomizes a slice of strings. Since everything is done in
-// place, the slice header is not modified: nothing is returned.
-func ShuffleString(p []string) {
-	for i := len(p) - 1; i >= 0; i-- {
-		r := rand.Intn(i + 1)
-		if i != r {
-			p[r], p[i] = p[i], p[r]
+// ShuffleUint64 randomizes an uint64 slice.
+func ShuffleUint64(c []uint64) error {
+	b := new(big.Int)
+	for i := len(c) - 1; i >= 0; i-- {
+		b = b.SetInt64(int64(i+1))
+		j, err := rand.Int(rand.Reader, b)
+		if err != nil {
+			return err
+		}
+		if i != int(j.Int64()) {
+			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
 		}
 	}
+	return nil
 }
