@@ -9,21 +9,31 @@ import (
 	"math/big"
 )
 
-// Interface randomizes an interface slice
-func Interface(c []interface{}) error {
+// Shuffler Interface
+type Shuffler interface {
+  Len() int // number of elements in the p
+  Swap(i, j int)  // swaps elements
+}
+
+// Shuffle randomizes collections: use this for Shuffler implementations.
+func Interface(c Shuffler) error {
 	b := new(big.Int)
-	for i := len(c) - 1; i >= 0; i-- {
+	l := c.Len()
+	for i := l - 1; i >= 0; i-- {
 		b = b.SetInt64(int64(i+1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
 		}
-		if i != int(j.Int64()) {
-			c[int(j.Int64())], c[i] = c[i], c[int(j.Int64())]
-		}
+		c.Swap(i, int(j.Int64()))
 	}
 	return nil
 }
+
+// Instead of using an interface, these funcs shuffle Go types by accepting
+// a slice of T and shuffling.  The Shuffle func is named after the Type that
+// it shuffles.  Since everything is done in place, the slice header is not
+// modified: nothing is returned.
 
 // Byte randomizes a byte slice.
 func Byte(c []byte) error {

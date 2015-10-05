@@ -10,10 +10,6 @@ var bfloat []float64
 var bint []int
 var bstring []string
 
-// deck of cards or same size as
-var dint []int
-var dstring []int
-
 type card struct {
 	suit  string
 	value int
@@ -24,7 +20,7 @@ type Deck struct {
 }
 
 func (d Deck) Len() int { return len(d.cards) }
-func (d *Deck) Swap(i, j int) {
+func (d Deck) Swap(i, j int) {
 	d.cards[i], d.cards[j] = d.cards[j], d.cards[i]
 
 }
@@ -82,7 +78,7 @@ var result error
 func BenchmarkShuffleInt(b *testing.B) {
 	var err error
 	for i := 0; i < b.N; i++ {
-		err = ShuffleInt(bint)
+		err = Int(bint)
 	}
 	result = err
 }
@@ -90,7 +86,7 @@ func BenchmarkShuffleInt(b *testing.B) {
 func BenchmarkShuffleFloat64(b *testing.B) {
 	var err error
 	for i := 0; i < b.N; i++ {
-		err = ShuffleFloat64(bfloat)
+		err = Float64(bfloat)
 	}
 	result = err
 }
@@ -100,7 +96,16 @@ var stringResult []string
 func BenchmarkShuffleString(b *testing.B) {
 	var err error
 	for i := 0; i < b.N; i++ {
-		err = ShuffleString(bstring)
+		err = String(bstring)
+	}
+	result = err
+}
+
+// shuffle 52
+func BenchmarkShuffleDeck(b *testing.B) {
+	var err error
+	for i := 0; i < b.N; i++ {
+		err = Interface(deck)
 	}
 	result = err
 }
