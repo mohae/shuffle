@@ -11,7 +11,7 @@ import (
 )
 
 // Shuffle randomizes collections
-func Shuffle(c shuffler.Shuffler) error {
+func Shuffle(c shuffle.Shuffler) error {
 	l := c.Len()
 	for i := l - 1; i >= 0; i-- {
 		j := rand.Intn(i + 1)
