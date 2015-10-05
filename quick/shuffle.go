@@ -7,17 +7,17 @@ package shuffler
 import (
 	"math/rand"
 
-	"github.com/mohae/shuffler"
+	"github.com/mohae/shuffle"
 )
 
 // Shuffle randomizes collections
 func Shuffle(c shuffler.Shuffler) error {
-    l := c.Len()
-    for i := l - 1; i >= 0; i-- {
-      j := rand.Intn(i + 1)
-      c.Swap(i, j)
-    }
-    return nil
+	l := c.Len()
+	for i := l - 1; i >= 0; i-- {
+		j := rand.Intn(i + 1)
+		c.Swap(i, j)
+	}
+	return nil
 }
 
 // ShuffleByte randomizes a byte slice.
@@ -64,7 +64,7 @@ func ShuffleFloat32(c []float32) {
 func ShuffleFloat64(c []float64) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := rand.Intn(i + 1)
-    if i != j {
+		if i != j {
 			c[j], c[i] = c[i], c[j]
 		}
 	}
@@ -75,13 +75,12 @@ func ShuffleFloat64(c []float64) error {
 func ShuffleInt(c []int) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := rand.Intn(i + 1)
-    if i != j {
+		if i != j {
 			c[j], c[i] = c[i], c[j]
 		}
 	}
 	return nil
 }
-
 
 // ShuffleInt8 randomizes an int8 slice.
 func ShuffleInt8(c []int8) {
@@ -125,7 +124,7 @@ func ShuffleInt64(c []int64) {
 func ShuffleString(c []string) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := rand.Intn(i + 1)
-    if i != j {
+		if i != j {
 			c[j], c[i] = c[i], c[j]
 		}
 	}
