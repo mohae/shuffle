@@ -1,18 +1,34 @@
-shuffler
+shuffle
 ========
 
-Shuffler randomizes data within slices.
+Shuffle randomizes data within slices useing the Fisher-Yates shuffle algorithm.
 
-Shuffler uses the Fisher-Yates shuffle algorithm for randomizing slices.  The shuffle functions receive a slice and randomize the data within the slice.  Nothing is returned by the slice because the randomization is done by swapping elements: no reallocations are done.
+Shuffle has implementations using both `math/rand` and `crypto/rand`. Use the one that fits your use case. The `math/rand` implementations can be found in `shuffle/quick`; their function names are slightly different than shuffle's.
 
-Shuffle can be called by either data type, e.g. `ShuffleInt8(int8Slice)`, or by calling `Shuffle()`.  If  `Shuffle()` is called, the slice is passed as an `interface{}`. The type of the slice will be determine which shuffle function to call; if the type is not supported an error will be returned.
+## String and Numeric types
+Shuffles are implemented for slices of Go string and numeric types. These shuffles modify the recieved slice; no additional slice related allocations will occur.
 
-If the slice is a slice of a custom type, it will need to be passed as `[]interface{}`.
+## Shuffler interface
+Other types can be shuffled by implementing the `shuffler` interface and calling either `shuffle.Interface(c Shuffler)`, for `crypto/rand` based shuffles, or `quick.Shuffle(c shuffle.Shuffler)` for `math/rand` based shuffle.
 
-## Usage
+## Using `shuffle`
+Shuffles using `crypto/rand`. While the slices are modified in place, `shuffle` funcs return an error as getting a random number from `crypto/rand` may result in an error.
+
 Import the library:
 
-    import github.com/mohae/shuffler
+    import github.com/mohae/shuffle
+
+Randomize:
+
+    err := shuffle.Int(x)
+
+## Using `shuffle/quick`
+Quick shuffles allocate minimal memory and are much faster than `crypto/rand` shuffles.  The slices are modified in place and nothing is returned.  Rand should be properly seeded before use; that is left up to the user of the package.
+
+Import the library:
+
+    import github.com/mohae/shuffle/quick
+
 
 Import `math/rand`:
 
@@ -26,14 +42,10 @@ Seed `math/rand`:
 
 Randomize:
 
-
-## Notes:
-Currently, `shuffler` uses `math/rand` which is not a CSPRNG.  This means the randomization is not truly random and the larger the set the worse the "randomization".
-
-It is the caller's responsibility to seed the PRNG.
+    quick.ShuffleInt(x)
 
 ## License
 
-Copyright 2014 Joel Scoble, all rights reserved.
+Copyright 2015 Joel Scoble, all rights reserved.
 
 Licensed under The MIT License. Please see the included license file for more details.
