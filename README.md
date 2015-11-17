@@ -1,5 +1,6 @@
 shuffle
 ========
+[![Build Status](https://travis-ci.org/mohae/shuffle.png)](https://travis-ci.org/mohae/shuffle)
 
 Shuffle randomizes data within slices useing the Fisher-Yates shuffle algorithm.
 
