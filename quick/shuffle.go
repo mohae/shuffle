@@ -1,8 +1,18 @@
 // Copyright 2014, Joel Scoble, all rights reserved.
 // Licensed under The MIT License. Please view the LICENSE file for more
 // information.
+
+// Shuffle provides math/rand based shuffling (randomization) of collections
+// using the Fisher-Yates (Knuth) shuffling algorithm.  Functions for
+// shuffling slices of non-composite types are provided, or you can implement
+// the Shuffler interface and shuffle using the shuffle.Interface() func.
 //
-package shuffler
+// Shuffling is performed on the received slice; nothing is returned and no
+// additional allocations are made.
+//
+// If a CSPRG based shuffle is needed, use the github.com/mohae/shuffle
+// package.
+package quick
 
 import (
 	"math/rand"

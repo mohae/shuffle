@@ -1,18 +1,29 @@
 // Copyright 2014, Joel Scoble, all rights reserved.
 // Licensed under The MIT License. Please view the LICENSE file for more
 // information.
+
+// Shuffle provides crypto/rand based shuffling (randomization) of collections
+// using the Fisher-Yates (Knuth) shuffling algorithm.  Functions for shuffling
+// slices of non-composite types are provided, or you can implement the
+// Shuffler interface and shuffle using the shuffle.Interface() func.
 //
-package shuffler
+// Shuffling is performed on the received slice; nothing is returned and no
+// additional allocations, aside from those caused by using crypto/rand.
+//
+// If using a math/rand based shuffle is good enough, see the
+// github.com/mohae/shuffle/quick package, which provides a quick,
+// pseudo-random shuffle.
+package shuffle
 
 import (
 	"crypto/rand"
 	"math/big"
 )
 
-// Shuffler Interface
+// Shuffler interface.
 type Shuffler interface {
-  Len() int // number of elements in the p
-  Swap(i, j int)  // swaps elements
+	Len() int      // number of elements in the p
+	Swap(i, j int) // swaps elements
 }
 
 // Shuffle randomizes collections: use this for Shuffler implementations.
@@ -20,7 +31,7 @@ func Interface(c Shuffler) error {
 	b := new(big.Int)
 	l := c.Len()
 	for i := l - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -39,7 +50,7 @@ func Interface(c Shuffler) error {
 func Byte(c []byte) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -55,7 +66,7 @@ func Byte(c []byte) error {
 func Complex64(c []complex64) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -71,7 +82,7 @@ func Complex64(c []complex64) error {
 func Complex128(c []complex128) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -87,7 +98,7 @@ func Complex128(c []complex128) error {
 func Float32(c []float32) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -103,7 +114,7 @@ func Float32(c []float32) error {
 func Float64(c []float64) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -119,7 +130,7 @@ func Float64(c []float64) error {
 func Int(c []int) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -135,7 +146,7 @@ func Int(c []int) error {
 func Int8(c []int8) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -151,7 +162,7 @@ func Int8(c []int8) error {
 func Int16(c []int16) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -167,7 +178,7 @@ func Int16(c []int16) error {
 func Int32(c []int32) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -183,7 +194,7 @@ func Int32(c []int32) error {
 func Int64(c []int64) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -199,7 +210,7 @@ func Int64(c []int64) error {
 func String(c []string) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -215,7 +226,7 @@ func String(c []string) error {
 func Uint(c []uint) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -231,7 +242,7 @@ func Uint(c []uint) error {
 func Uint8(c []uint8) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -247,7 +258,7 @@ func Uint8(c []uint8) error {
 func Uint16(c []uint16) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -263,7 +274,7 @@ func Uint16(c []uint16) error {
 func Uint32(c []uint32) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err
@@ -279,7 +290,7 @@ func Uint32(c []uint32) error {
 func Uint64(c []uint64) error {
 	b := new(big.Int)
 	for i := len(c) - 1; i >= 0; i-- {
-		b = b.SetInt64(int64(i+1))
+		b = b.SetInt64(int64(i + 1))
 		j, err := rand.Int(rand.Reader, b)
 		if err != nil {
 			return err

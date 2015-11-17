@@ -1,4 +1,4 @@
-package shuffler
+package quick
 
 import (
 	"fmt"
