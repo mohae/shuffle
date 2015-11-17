@@ -5,7 +5,7 @@
 // Shuffle provides math/rand based shuffling (randomization) of collections
 // using the Fisher-Yates (Knuth) shuffling algorithm.  Functions for
 // shuffling slices of non-composite types are provided, or you can implement
-// the Shuffler interface and shuffle using the shuffle.Interface() func.
+// the shuffle.Shuffler interface and shuffle using the Shuffle func.
 //
 // Shuffling is performed on the received slice; nothing is returned and no
 // additional allocations are made.
