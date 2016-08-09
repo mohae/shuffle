@@ -45,7 +45,7 @@ func Seed() error {
 	return nil
 }
 
-// Shuffle randomizes collections
+// Shuffle randomizes collections. A nil error will be returned.
 func Shuffle(c shuffle.Shuffler) error {
 	l := c.Len()
 	for i := l - 1; i >= 0; i-- {
@@ -57,7 +57,7 @@ func Shuffle(c shuffle.Shuffler) error {
 	return nil
 }
 
-// ShuffleByte randomizes a byte slice.
+// ShuffleByte randomizes a byte slice. A nil error will be returned.
 func ShuffleByte(c []byte) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -68,7 +68,7 @@ func ShuffleByte(c []byte) error {
 	return nil
 }
 
-// ShuffleComplex64 randomizes a complex64 slice.
+// ShuffleComplex64 randomizes a complex64 slice. A nil error will be returned.
 func ShuffleComplex64(c []complex64) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -79,7 +79,8 @@ func ShuffleComplex64(c []complex64) error {
 	return nil
 }
 
-// ShuffleComplex129 randomizes a complex128 slice.
+// ShuffleComplex129 randomizes a complex128 slice. A nil error will be
+// returned.
 func ShuffleComplex128(c []complex128) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -90,7 +91,7 @@ func ShuffleComplex128(c []complex128) error {
 	return nil
 }
 
-// ShuffleFloat32 randomizes a float32 slice.
+// ShuffleFloat32 randomizes a float32 slice. A nil error will be returned.
 func ShuffleFloat32(c []float32) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -101,7 +102,7 @@ func ShuffleFloat32(c []float32) error {
 	return nil
 }
 
-// ShuffleFloat64 randomizes a float64 slice.
+// ShuffleFloat64 randomizes a float64 slice. A nil error will be returned.
 func ShuffleFloat64(c []float64) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -112,7 +113,7 @@ func ShuffleFloat64(c []float64) error {
 	return nil
 }
 
-// ShuffleInt randomizes an int slice.
+// ShuffleInt randomizes an int slice. A nil error will be returned.
 func ShuffleInt(c []int) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -123,7 +124,7 @@ func ShuffleInt(c []int) error {
 	return nil
 }
 
-// ShuffleInt8 randomizes an int8 slice.
+// ShuffleInt8 randomizes an int8 slice. A nil error will be returned.
 func ShuffleInt8(c []int8) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -134,7 +135,7 @@ func ShuffleInt8(c []int8) error {
 	return nil
 }
 
-// ShuffleInt16 randomizes an int16 slice.
+// ShuffleInt16 randomizes an int16 slice. A nil error will be returned.
 func ShuffleInt16(c []int16) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -145,7 +146,7 @@ func ShuffleInt16(c []int16) error {
 	return nil
 }
 
-// ShuffleInt32 randomizes an int32 slice.
+// ShuffleInt32 randomizes an int32 slice. A nil error will be returned.
 func ShuffleInt32(c []int32) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -156,7 +157,7 @@ func ShuffleInt32(c []int32) error {
 	return nil
 }
 
-// ShuffleInt64 randomizes an int64 slice.
+// ShuffleInt64 randomizes an int64 slice. A nil error will be returned.
 func ShuffleInt64(c []int64) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -167,7 +168,7 @@ func ShuffleInt64(c []int64) error {
 	return nil
 }
 
-// ShuffleString randomizes a strings slice.
+// ShuffleString randomizes a strings slice. A nil error will be returned.
 func ShuffleString(c []string) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -178,7 +179,7 @@ func ShuffleString(c []string) error {
 	return nil
 }
 
-// ShuffleUint randomizes an uint slice.
+// ShuffleUint randomizes an uint slice. A nil error will be returned.
 func ShuffleUint(c []uint) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -189,7 +190,7 @@ func ShuffleUint(c []uint) error {
 	return nil
 }
 
-// ShuffleUint8 randomizes an uint8 slice.
+// ShuffleUint8 randomizes an uint8 slice. A nil error will be returned.
 func ShuffleUint8(c []uint8) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -200,7 +201,7 @@ func ShuffleUint8(c []uint8) error {
 	return nil
 }
 
-// ShuffleUint16 randomizes an uint16 slice.
+// ShuffleUint16 randomizes an uint16 slice. A nil error will be returned.
 func ShuffleUint16(c []uint16) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -211,7 +212,7 @@ func ShuffleUint16(c []uint16) error {
 	return nil
 }
 
-// ShuffleUint32 randomizes an uint32 slice.
+// ShuffleUint32 randomizes an uint32 slice. A nil error will be returned.
 func ShuffleUint32(c []uint32) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
@@ -222,7 +223,7 @@ func ShuffleUint32(c []uint32) error {
 	return nil
 }
 
-// ShuffleUint64 randomizes an uint64 slice.
+// ShuffleUint64 randomizes an uint64 slice. A nil error will be returned.
 func ShuffleUint64(c []uint64) error {
 	for i := len(c) - 1; i >= 0; i-- {
 		j := int(rng.Bound(uint32(i + 1)))
