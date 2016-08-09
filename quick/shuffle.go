@@ -49,8 +49,8 @@ func Seed() error {
 func Shuffle(c shuffle.Shuffler) error {
 	l := c.Len()
 	for i := l - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		c.Swap(i, int(j))
+		j := int(rng.Bound(uint32(i + 1)))
+		c.Swap(i, j)
 	}
 	return nil
 }
@@ -58,9 +58,9 @@ func Shuffle(c shuffle.Shuffler) error {
 // ShuffleByte randomizes a byte slice.
 func ShuffleByte(c []byte) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -68,9 +68,9 @@ func ShuffleByte(c []byte) {
 // ShuffleComplex64 randomizes a complex64 slice.
 func ShuffleComplex64(c []complex64) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -78,9 +78,9 @@ func ShuffleComplex64(c []complex64) {
 // ShuffleComplex129 randomizes a complex128 slice.
 func ShuffleComplex128(c []complex128) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -88,9 +88,9 @@ func ShuffleComplex128(c []complex128) {
 // ShuffleFloat32 randomizes a float32 slice.
 func ShuffleFloat32(c []float32) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -98,9 +98,9 @@ func ShuffleFloat32(c []float32) {
 // ShuffleFloat64 randomizes a float64 slice.
 func ShuffleFloat64(c []float64) error {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 	return nil
@@ -109,9 +109,9 @@ func ShuffleFloat64(c []float64) error {
 // ShuffleInt randomizes an int slice.
 func ShuffleInt(c []int) error {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 	return nil
@@ -120,9 +120,9 @@ func ShuffleInt(c []int) error {
 // ShuffleInt8 randomizes an int8 slice.
 func ShuffleInt8(c []int8) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -130,9 +130,9 @@ func ShuffleInt8(c []int8) {
 // ShuffleInt16 randomizes an int16 slice.
 func ShuffleInt16(c []int16) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -140,17 +140,17 @@ func ShuffleInt16(c []int16) {
 // ShuffleInt32 randomizes an int32 slice.
 func ShuffleInt32(c []int32) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		c[j], c[i] = c[i], c[j]
 	}
 }
 
 // ShuffleInt64 randomizes an int64 slice.
 func ShuffleInt64(c []int64) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -158,9 +158,9 @@ func ShuffleInt64(c []int64) {
 // ShuffleString randomizes a strings slice.
 func ShuffleString(c []string) error {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 	return nil
@@ -169,9 +169,9 @@ func ShuffleString(c []string) error {
 // ShuffleUint randomizes an uint slice.
 func ShuffleUint(c []uint) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -179,9 +179,9 @@ func ShuffleUint(c []uint) {
 // ShuffleUint8 randomizes an uint8 slice.
 func ShuffleUint8(c []uint8) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -189,9 +189,9 @@ func ShuffleUint8(c []uint8) {
 // ShuffleUint16 randomizes an uint16 slice.
 func ShuffleUint16(c []uint16) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -199,9 +199,9 @@ func ShuffleUint16(c []uint16) {
 // ShuffleUint32 randomizes an uint32 slice.
 func ShuffleUint32(c []uint32) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
@@ -209,9 +209,9 @@ func ShuffleUint32(c []uint32) {
 // ShuffleUint64 randomizes an uint64 slice.
 func ShuffleUint64(c []uint64) {
 	for i := len(c) - 1; i >= 0; i-- {
-		j := rng.Bound(uint32(i + 1))
-		if i != int(j) {
-			c[int(j)], c[i] = c[i], c[int(j)]
+		j := int(rng.Bound(uint32(i + 1)))
+		if i != j {
+			c[j], c[i] = c[i], c[j]
 		}
 	}
 }
