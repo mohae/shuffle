@@ -15,7 +15,7 @@ Other types can be shuffled by implementing the `shuffler` interface and calling
 See `bench_test.go`'s `Deck` for an example implementation.
 
 ## `shuffle`  
-Shuffles the elements using `crypto/rand`.  If there is an error obtaining a random value, a panic will occur.
+Shuffles the elements using `crypto/rand`.  
 
 ## `shuffle/quick`  
 Quick shuffles allocate minimal memory, if any, and are much faster than `crypto/rand` shuffles.  The slices are modified in place and nothing is returned.  The PRNG is seeded using a value obtained from `crypto/rand` during initialization; if this operation results in an error, a panic will occur.
