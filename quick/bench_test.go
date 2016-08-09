@@ -24,7 +24,7 @@ type Deck struct {
 }
 
 func (d Deck) Len() int { return len(d.cards) }
-func (d *Deck) Swap(i, j int) {
+func (d Deck) Swap(i, j int) {
 	d.cards[i], d.cards[j] = d.cards[j], d.cards[i]
 
 }
@@ -105,4 +105,13 @@ func BenchmarkShuffleString(b *testing.B) {
 		strings = bstring
 	}
 	_ = strings
+}
+
+// shuffle 52
+func BenchmarkShuffleDeck(b *testing.B) {
+	var err error
+	for i := 0; i < b.N; i++ {
+		err = Shuffle(deck)
+	}
+	_ = err
 }
